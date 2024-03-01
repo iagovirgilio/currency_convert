@@ -24,16 +24,19 @@ def convert_currency(request):
 
 def get_exchange_rate(from_currency, to_currency):
     """Obtém a taxa de câmbio de uma moeda para outra."""
-    base_url = "https://api.exchangerate-api.com/v4/latest/"
-    url = f"{base_url}/{from_currency}"
+    base_url = "https://api.coingecko.com/api/v3/simple/price"
+    params = {
+        'ids': from_currency,
+        'vs_currencies': to_currency
+    }
+    response = requests.get(base_url, params=params)
+    data = response.json()
 
-    response = requests.get(url)
     if response.status_code != 200:
         return None
 
-    data = response.json()
-    rates = data.get("rates")
-    if not rates or to_currency not in rates:
+    rates = data.get(from_currency.lower())
+    if not rates or to_currency.lower() not in rates:
         return None
     
-    return rates[to_currency]
+    return rates[to_currency.lower()]
