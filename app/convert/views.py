@@ -31,6 +31,11 @@ def get_exchange_rate(from_currency, to_currency):
     }
     response = requests.get(base_url, params=params)
     data = response.json()
+    print("-" * 100)
+    print(response)
+    print("-" * 100)
+    print(data)
+    print("-" * 100)
 
     if response.status_code != 200:
         return None
