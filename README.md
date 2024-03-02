@@ -17,7 +17,13 @@ Execute o código com:
 ```bash
   docker-compose up
 ```
-    
+
+
+Acesso ao terminal da aplicação:
+```bash
+  docker exec -it app sh
+```
+
 ## Melhorias
 
 1 - Criar um usuário específico para rodar a aplicação. Até o momento o damemon do docker está usando o usuário root o que não é uma prática recomendada a nível de segurança.
@@ -30,4 +36,4 @@ No primeiro momento escolhi a API exchangerate v4, mas tem a limitação de não
 
 ## Observações
 
-O arquivo .env está no repositório para cumprir o requisito pedido no teste de apenas dar o comando para subir a aplicação e funcionar. Em projetos não coloco o .env no repositório, apenas o .env-example.
+O arquivo .env está no repositório para cumprir o requisito pedido no teste de apenas dar o comando para subir a aplicação e funcionar. Num projeto não coloco o .env no repositório, apenas o .env-example.
