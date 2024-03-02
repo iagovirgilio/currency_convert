@@ -27,3 +27,7 @@ Execute o código com:
 3 - Limitação da API de cotação: Inicialmente usei a biblioteca forex-python, pois já tem uma função para converter moedas, mas me deparei com a limitação da versão do python. jJá que estava na versão 3.12 o que não é compatível com a biblioteca. Então decidi usar uma API de terceiros, pois foi menos custoso do que refazer todo o projeto usando outra versão do Python. 
 
 No primeiro momento escolhi a API exchangerate v4, mas tem a limitação de não ter cotação para criptomoedas. Troquei para coingecko, que funcionou muito bem, mas tem limitação de requisição por ser uma API paga.
+
+## Observações
+
+O arquivo .env está no repositório para cumprir o requisito pedido no teste de apenas dar o comando para subir a aplicação e funcionar. Em projetos não coloco o .env no repositório, apenas o .env-example.
