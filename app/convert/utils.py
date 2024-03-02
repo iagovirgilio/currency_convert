@@ -1,5 +1,4 @@
-
-def format_value_br(valor, decimais=2):
-    retorno = f"{valor:,.{decimais}f}"
-    retorno = retorno.replace(',', '_').replace('.', ',').replace('_', '.')
-    return retorno
+def format_brazilian_currency(value, decimals=2):
+    formatted_value = f"{value:,.{decimals}f}"
+    formatted_value = formatted_value.replace(',', '_').replace('.', ',').replace('_', '.')
+    return formatted_value

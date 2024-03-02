@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import requests
-from .utils import format_value_br
+from .utils import format_brazilian_currency
 
 
 def index(request):
@@ -10,7 +10,6 @@ def index(request):
 
 
 def convert_currency(request):
-    """Converte uma quantia de uma moeda para outra."""
     from_currency = request.GET.get('from')
     to_currency = request.GET.get('to')
     amount = float(request.GET.get('amount'))
@@ -21,25 +20,16 @@ def convert_currency(request):
 
     converted_amount = round(amount * rate, 2)
 
-    formatted_amount = format_value_br(converted_amount)
+    formatted_amount = format_brazilian_currency(converted_amount)
     
     return JsonResponse({'converted_amount': formatted_amount})
 
 
 def get_exchange_rate(from_currency, to_currency):
-    """Obtém a taxa de câmbio de uma moeda para outra."""
     base_url = "https://api.coingecko.com/api/v3/simple/price"
-    params = {
-        'ids': from_currency,
-        'vs_currencies': to_currency
-    }
+    params = {'ids': from_currency, 'vs_currencies': to_currency}
     response = requests.get(base_url, params=params)
     data = response.json()
-    print("-" * 100)
-    print(response)
-    print("-" * 100)
-    print(data)
-    print("-" * 100)
 
     if response.status_code != 200:
         return None
