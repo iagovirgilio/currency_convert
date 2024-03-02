@@ -19,7 +19,10 @@ def convert_currency(request):
         return JsonResponse({'error': 'Taxa de câmbio não disponível'}, status=400)
 
     converted_amount = round(amount * rate, 2)
-    return JsonResponse({'converted_amount': converted_amount})
+
+    formatted_amount = format_value_br(converted_amount)
+    
+    return JsonResponse({'converted_amount': formatted_amount})
 
 
 def get_exchange_rate(from_currency, to_currency):
@@ -45,3 +48,9 @@ def get_exchange_rate(from_currency, to_currency):
         return None
     
     return rates[to_currency.lower()]
+
+
+def format_value_br(valor, decimais=2):
+    retorno = f"{valor:,.{decimais}f}"
+    retorno = retorno.replace(',', '_').replace('.', ',').replace('_', '.')
+    return retorno
