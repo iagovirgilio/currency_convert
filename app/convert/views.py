@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import requests
+from .utils import format_value_br
 
 
 def index(request):
@@ -48,9 +49,3 @@ def get_exchange_rate(from_currency, to_currency):
         return None
     
     return rates[to_currency.lower()]
-
-
-def format_value_br(valor, decimais=2):
-    retorno = f"{valor:,.{decimais}f}"
-    retorno = retorno.replace(',', '_').replace('.', ',').replace('_', '.')
-    return retorno
