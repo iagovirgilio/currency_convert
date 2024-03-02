@@ -18,7 +18,7 @@ def convert_currency(request):
     if rate is None:
         return JsonResponse({'error': 'Taxa de câmbio não disponível'}, status=400)
 
-    converted_amount = round(amount * rate, 2)
+    converted_amount = round(amount * rate, 4)
 
     formatted_amount = format_brazilian_currency(converted_amount)
     
