@@ -20,7 +20,7 @@ def convert_currency(request):
 
     converted_amount = round(amount * rate, 4)
 
-    formatted_amount = format_brazilian_currency(converted_amount)
+    formatted_amount = format_brazilian_currency(converted_amount, 4)
     
     return JsonResponse({'converted_amount': formatted_amount})
 
