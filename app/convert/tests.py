@@ -9,7 +9,7 @@ class APITestCase(TestCase):
     def test_index_view(self):
         response = self.client.get(reverse('convert:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'convert/index.html')
+        self.assertTemplateUsed(response, 'convert/pages/index.html')
 
     def test_convert_currency(self):
         # Teste para conversão de moeda bem-sucedida

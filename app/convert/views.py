@@ -6,7 +6,7 @@ from .utils import format_brazilian_currency
 
 def index(request):
     """Renderiza a página inicial."""
-    return render(request, 'convert/index.html')
+    return render(request, 'convert/pages/index.html')
 
 
 def convert_currency(request):

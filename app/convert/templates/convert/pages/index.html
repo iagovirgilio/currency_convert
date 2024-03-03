@@ -1,0 +1,33 @@
+{% extends 'convert/base.html' %}
+
+{% block content %}
+    <h1>Conversor de Moedas</h1>
+    <form id="currency-form">
+        <div class="form-group">
+            <label for="from">De:</label>
+            <select id="from" name="from">
+                <option value="USD">USD</option>
+                <option value="BRL">BRL</option>
+                <option value="EUR">EUR</option>
+                <option value="bitcoin">BTC</option>
+                <option value="ethereum">ETH</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="to">Para:</label>
+            <select id="to" name="to">
+                <option value="USD">USD</option>
+                <option value="BRL" selected>BRL</option>
+                <option value="EUR">EUR</option>
+                <option value="bitcoin">BTC</option>
+                <option value="ethereum">ETH</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="amount">Quantidade:</label>
+            <input type="number" id="amount" name="amount" value="1" placeholder="Ex: 100">
+        </div>
+        <button type="submit">Converter</button>
+    </form>
+    <div id="result"></div>
+{% endblock content %}
