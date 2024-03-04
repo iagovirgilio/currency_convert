@@ -6,21 +6,17 @@
         <div class="form-group">
             <label for="from">De:</label>
             <select id="from" name="from">
-                <option value="USD">USD</option>
-                <option value="BRL">BRL</option>
-                <option value="EUR">EUR</option>
-                <option value="bitcoin">BTC</option>
-                <option value="ethereum">ETH</option>
-            </select>
+                {% for coin in coins %}
+                    <option value="{{ coin.name }}">{{ coin.abbreviation }}</option>
+                {% endfor %}
+                </select>
         </div>
         <div class="form-group">
             <label for="to">Para:</label>
             <select id="to" name="to">
-                <option value="USD">USD</option>
-                <option value="BRL" selected>BRL</option>
-                <option value="EUR">EUR</option>
-                <option value="bitcoin">BTC</option>
-                <option value="ethereum">ETH</option>
+                {% for coin in coins %}
+                    <option {% if coin.abbreviation == 'BRL' %}selected{% endif %} value="{{ coin.name }}">{{ coin.abbreviation }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group">

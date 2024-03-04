@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from .utils import format_brazilian_currency
+from .models import Coin
 
 
 def index(request):
     """Renderiza a página inicial."""
-    return render(request, 'convert/pages/index.html')
+    coins = Coin.objects.all()
+    return render(request, 'convert/pages/index.html', {'coins': coins})
 
 
 def convert_currency(request):
